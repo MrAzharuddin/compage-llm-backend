@@ -25,7 +25,6 @@ class OpenAIRequest(BaseModel):
 
 def validate_gpt_request(request: GPTRequest):
     """Validates the GPTRequest object"""
-
     if not request.prompt:
         raise HTTPException(status_code=400, detail="prompt cannot be empty")
 
