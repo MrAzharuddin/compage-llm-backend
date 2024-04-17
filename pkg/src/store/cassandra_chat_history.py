@@ -1,6 +1,4 @@
-"""
-This module provides a function to store chat history in Cassandra.
-"""
+"""This module provides a function to store chat history in Cassandra."""
 
 import uuid
 
@@ -9,9 +7,7 @@ from langchain.memory import CassandraChatMessageHistory
 
 
 def chat_history_store(session: Session):
-    """
-    A function to get the cluster and establish a session to a specific keyspace.
-    """
+    """A function to get the cluster and establish a session to a specific keyspace."""
     memory_history = CassandraChatMessageHistory(
         session_id=str(uuid.uuid4()),
         session=session,

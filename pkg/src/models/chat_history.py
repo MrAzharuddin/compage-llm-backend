@@ -1,6 +1,4 @@
-"""
-This module provides a class to store chat history in Cassandra.
-"""
+"""This module provides a class to store chat history in Cassandra."""
 
 import uuid
 from datetime import datetime
@@ -14,9 +12,7 @@ from pkg.src.config.database import KEYSPACE
 
 
 class ChatHistory(Model):
-    """
-    This class represents the chat history table in the Cassandra database.
-    """
+    """This class represents the chat history table in the Cassandra database."""
 
     __keyspace__ = KEYSPACE
     __table_name__ = "chat_history"
@@ -38,9 +34,7 @@ class ChatHistory(Model):
     def store_history_entry(
         main_prompt: str, prompt: str, language: str, code: Dict[str, Any]
     ) -> "ChatHistory":
-        """
-        Stores the chat history entry in the Cassandra database.
-        """
+        """Stores the chat history entry in the Cassandra database."""
         current_history, _ = ChatHistory.objects.get_or_create(
             main_prompt=main_prompt, defaults={"history": {}}
         )

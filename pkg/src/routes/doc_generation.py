@@ -86,9 +86,7 @@ async def doc_generate(request_body: GPTRequest):
 
 # Helper function for prompt tokenization
 def tokenize_prompt(prompt, chunk_size=1000, chunk_overlap=200):
-    """
-    tokenizes the prompt into chunks
-    """
+    """tokenizes the prompt into chunks"""
     text_splitter = TokenTextSplitter(
         chunk_size=chunk_size, chunk_overlap=chunk_overlap
     )

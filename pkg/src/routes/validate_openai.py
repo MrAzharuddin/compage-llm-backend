@@ -7,9 +7,7 @@ router = APIRouter()
 
 @router.post("/validate_openai")
 async def validate_openai(request_body: OpenAIRequest):
-    """
-    A function to validate the OpenAI API key.
-    """
+    """A function to validate the OpenAI API key."""
     if not request_body.openai_api_key:
         raise HTTPException(status_code=400, detail="OpenAI API key is required")
 

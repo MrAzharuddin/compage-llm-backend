@@ -8,9 +8,7 @@ KEYSPACE = "backend_llm"
 
 
 def get_session():
-    """
-    A function to get the cluster and establish a session to a specific keyspace.
-    """
+    """A function to get the cluster and establish a session to a specific keyspace."""
     cluster = Cluster(
         ["127.0.0.1"],
         port=9042,
@@ -24,7 +22,5 @@ def get_session():
 
 
 def get_keyspace() -> str:
-    """
-    A function to get the cluster and establish a session to a specific keyspace.
-    """
+    """A function to get the cluster and establish a session to a specific keyspace."""
     return KEYSPACE
