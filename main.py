@@ -30,8 +30,12 @@ cors_middleware(app)
 
 # routes
 app.include_router(health.router, tags=["Health"], prefix="/api")
-app.include_router(validate_openai.router, tags=["OpenAI Validation"], prefix="/api")
-app.include_router(unit_test.router, tags=["Unit Test Generation"], prefix="/api")
+app.include_router(
+    validate_openai.router, tags=["OpenAI Validation"], prefix="/api"
+)
+app.include_router(
+    unit_test.router, tags=["Unit Test Generation"], prefix="/api"
+)
 app.include_router(
     doc_generation.router, tags=["Documentation Generation"], prefix="/api"
 )

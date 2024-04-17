@@ -29,6 +29,8 @@ def validate_gpt_request(request: GPTRequest):
         raise HTTPException(status_code=400, detail="prompt cannot be empty")
 
     if not request.openai_api_key:
-        raise HTTPException(status_code=400, detail="openai_api_key cannot be empty")
+        raise HTTPException(
+            status_code=400, detail="openai_api_key cannot be empty"
+        )
 
     return request

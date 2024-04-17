@@ -16,10 +16,13 @@ class ChatHistory(Model):
 
     __keyspace__ = KEYSPACE
     __table_name__ = "chat_history"
-    id = columns.UUID(primary_key=True, partition_key=True, default=uuid.uuid1)
+    id = columns.UUID(
+        primary_key=True, partition_key=True, default=uuid.uuid1
+    )
     main_prompt = columns.Text()
     history = columns.Map(
-        columns.UUID(default=uuid.uuid1), columns.Map(columns.Text(), columns.Text())
+        columns.UUID(default=uuid.uuid1),
+        columns.Map(columns.Text(), columns.Text()),
     )
     created_at = columns.DateTime()
     updated_at = columns.DateTime()
@@ -39,7 +42,11 @@ class ChatHistory(Model):
             main_prompt=main_prompt, defaults={"history": {}}
         )
         history_entry = {
-            str(uuid.uuid1()): {"prompt": prompt, "language": language, "code": code}
+            str(uuid.uuid1()): {
+                "prompt": prompt,
+                "language": language,
+                "code": code,
+            }
         }
         current_history.history.update(history_entry)
         current_history.created_at = datetime.now(pytz.utc)

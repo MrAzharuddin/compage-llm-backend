@@ -9,7 +9,9 @@ router = APIRouter()
 async def validate_openai(request_body: OpenAIRequest):
     """A function to validate the OpenAI API key."""
     if not request_body.openai_api_key:
-        raise HTTPException(status_code=400, detail="OpenAI API key is required")
+        raise HTTPException(
+            status_code=400, detail="OpenAI API key is required"
+        )
 
     # Set the OpenAI API key
     openai.api_key = request_body.openai_api_key
@@ -17,7 +19,8 @@ async def validate_openai(request_body: OpenAIRequest):
     # Check if the API key is valid
     try:
         response = openai.chat.completions.create(
-            model="gpt-3.5-turbo", messages=[{"role": "user", "content": "Hello world"}]
+            model="gpt-3.5-turbo",
+            messages=[{"role": "user", "content": "Hello world"}],
         )
         return {
             "status": "success",
