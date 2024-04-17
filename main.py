@@ -14,9 +14,7 @@ from pkg.src.routes import health, unit_test, doc_generation, validate_openai
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    """
-    # trigger everytime the app starts
-    """
+    """# trigger everytime the app starts"""
     db_session = get_session()
     if not db_session:
         logger.error("Database connection failed!")
