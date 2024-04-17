@@ -18,7 +18,8 @@ def get_session():
         load_balancing_policy=DCAwareRoundRobinPolicy(local_dc="datacenter1"),
         protocol_version=4,
     )
-    session = cluster.connect(keyspace=KEYSPACE, wait_for_all_pools=True)
+    session = cluster.connect()
+    session.execute(f"CREATE KEYSPACE IF NOT EXISTS {KEYSPACE} WITH REPLICATION = {{'class' : 'SimpleStrategy', 'replication_factor' : 1}}")
     register_connection(str(session), session=session)
     set_default_connection(str(session))
     return session
