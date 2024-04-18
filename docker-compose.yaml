@@ -11,10 +11,19 @@ services:
     volumes:
     - .:/app
     depends_on:
-      - cassandra
-    command: ["./wait.sh", "cassandra:9042","--", "./start.sh"] 
+      cassandra:
+        condition: service_healthy
+
   cassandra:
     container_name: cassandra
     image: cassandra
     ports:
       - "9042:9042"
+    restart:
+      on-failure
+    healthcheck:
+      test: ["CMD-SHELL", "nodetool status"]
+      interval: 2m
+      start_period: 2m
+      timeout: 10s
+      retries: 3
