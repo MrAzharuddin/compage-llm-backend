@@ -12,8 +12,7 @@ services:
     - .:/app
     depends_on:
       - cassandra
-    command: ["./wait.sh","-t","30", "cassandra:9042","--", "./start.sh"] 
-
+    command: ["./wait.sh", "cassandra:9042","--", "./start.sh"] 
   cassandra:
     container_name: cassandra
     image: cassandra
