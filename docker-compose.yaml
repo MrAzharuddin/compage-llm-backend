@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: compage-llm
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+    - .:/app
+    depends_on:
+      - cassandra
+    command: ["./wait.sh","-t","30", "cassandra:9042","--", "./start.sh"] 
+
+  cassandra:
+    container_name: cassandra
+    image: cassandra
+    ports:
+      - "9042:9042"

@@ -13,7 +13,7 @@ KEYSPACE = "backend_llm"
 def get_session():
     """A function to get the cluster and establish a session to a specific keyspace."""
     cluster = Cluster(
-        ["127.0.0.1"],
+        ["cassandra"],
         port=9042,
         load_balancing_policy=DCAwareRoundRobinPolicy(local_dc="datacenter1"),
         protocol_version=4,

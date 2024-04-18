@@ -10,10 +10,11 @@ RUN pip install -r requirements.txt
 
 # Copy the application code
 COPY . .
-
+RUN chmod +x ./wait.sh && chmod +x ./start.sh
 EXPOSE 8000
 
 EXPOSE 9042
 
 # Stage 2: Run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["./wait.sh","-t", "30", "cassandra:9042","--", "./start.sh"] 
+# CMD ["/bin/bash"]
