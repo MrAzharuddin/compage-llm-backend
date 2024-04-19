@@ -34,14 +34,6 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 RUN pip install --upgrade pip setuptools
 
-RUN addgroup -g 1001 appuser && \
-    adduser -S -u 1001 -G appuser appuser
-
-RUN chown -R appuser:appuser /app/ && \
-    chmod 755 /app/
-
-USER appuser
-
 EXPOSE 8000
 
 EXPOSE 9042
