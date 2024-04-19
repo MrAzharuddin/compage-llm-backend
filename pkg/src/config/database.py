@@ -33,6 +33,11 @@ class CustomRetryPolicy(RetryPolicy):
 
 
 def retry_on_failure(max_retries=3, delay=5):
+    """
+    A function decorator that retries the execution of a function in case of failure up to a maximum number of retries.
+    It takes the maximum number of retries and the delay between retries as parameters.
+    Returns a decorator function that wraps the provided function and handles retries.
+    """
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
