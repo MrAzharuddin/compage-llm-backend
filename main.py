@@ -4,7 +4,6 @@ import uvicorn
 
 from fastapi import FastAPI
 
-from logger import logger
 from pkg.src.config.database import get_session
 from pkg.src.middleware.cors import cors_middleware
 
@@ -17,9 +16,9 @@ async def lifespan(_: FastAPI):
     """# trigger everytime the app starts"""
     db_session = get_session()
     if not db_session:
-        logger.error("Database connection failed!")
+        print("Database connection failed!")
         return
-    logger.info("Database connected!")
+    print("Database connected!")
     yield
 
 
