@@ -1,8 +1,8 @@
 # Stage 1: Build the application
 FROM cgr.dev/chainguard/wolfi-base AS builder
 
-RUN apk update && apk add python-3.10 && \
-apk add py3.10-pip 
+RUN apk update && apk add python-3.11 && \
+apk add py3.11-pip 
 
 USER nonroot
 
@@ -22,8 +22,8 @@ RUN pip install -r /app/requirements.txt --user
 # Stage 2: Copy the venv and run the application
 FROM cgr.dev/chainguard/wolfi-base AS final 
 
-RUN apk update && apk add python-3.10 && \
-    apk add py3.10-pip 
+RUN apk update && apk add python-3.11 && \
+    apk add py3.11-pip 
     
 RUN pip install --upgrade pip setuptools
 
